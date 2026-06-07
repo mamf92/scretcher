@@ -29,12 +29,15 @@ function FooterSearchForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col items-center">
       <div className="relative flex min-w-full flex-col">
-        <label htmlFor="searchInput" className="font-heading font-base w-full text-left text-white">
+        <label
+          htmlFor="footerSearchInput"
+          className="font-heading font-base w-full text-left text-white"
+        >
           Search
         </label>
         <div className="relative flex w-full flex-col">
           <input
-            id="searchInput"
+            id="footerSearchInput"
             type="text"
             placeholder="What are you looking for?"
             {...register('query')}
