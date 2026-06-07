@@ -1,11 +1,36 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 
 export default function BurgerMenu({ handleClose }: { handleClose: () => void }) {
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handleClose]);
+
+  useEffect(() => {
+    firstLinkRef.current?.focus();
+  }, []);
+
   return (
-    <div className="bg-muted-brown/90 flex w-37.5 flex-col px-4 md:w-80">
-      <nav className="font-heading flex flex-col text-sm text-black md:text-2xl">
+    <div id="burger-menu" className="bg-muted-brown/90 flex w-37.5 flex-col px-4 md:w-80">
+      <nav
+        aria-label="Site navigation"
+        className="font-heading flex flex-col text-sm text-black md:text-2xl"
+      >
         <div className="flex flex-col py-2">
-          <Link href="/" onClick={handleClose} className="text-base hover:underline md:text-3xl">
+          <Link
+            ref={firstLinkRef}
+            href="/"
+            onClick={handleClose}
+            className="text-base hover:underline md:text-3xl"
+          >
             Home
           </Link>
           <div className="flex flex-col px-2">
