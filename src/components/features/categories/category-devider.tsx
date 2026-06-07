@@ -8,9 +8,9 @@ export default function CategoryDivider() {
   return (
     <div className="bg-primary-brown w-full px-6 py-8">
       <div className="mx-auto flex max-w-3xl flex-col gap-3">
-        <h1 className="font-hero text-muted-brown text-center text-3xl uppercase">
+        <h2 className="font-hero text-muted-brown text-center text-3xl uppercase">
           Shop by category
-        </h1>
+        </h2>
         <div className="xs:justify-evenly flex flex-row justify-between sm:justify-center sm:gap-6 md:gap-4">
           {items.map((item) => (
             <div key={item.slug} className="flex shrink-0 flex-col items-center">

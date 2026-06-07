@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-10">
+    <div className="mx-auto w-full max-w-3xl px-6 py-10">
       <div className="mb-10 flex flex-col items-center gap-8 md:flex-row">
         <div className="px-4 md:w-1/2">
           <p className="mb-4">
@@ -46,6 +46,6 @@ export default function About() {
           className="h-auto w-full max-w-150 object-cover md:w-[45%] md:max-w-none md:shrink-0"
         />
       </div>
-    </main>
+    </div>
   );
 }
