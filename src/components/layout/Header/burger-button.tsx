@@ -4,6 +4,9 @@ export function BurgerButton({ isOpen, onToggle }: { isOpen: boolean; onToggle: 
       onClick={onToggle}
       className="flex h-5 w-7 cursor-pointer flex-col items-center justify-center gap-1"
       aria-label="Toggle menu"
+      aria-expanded={isOpen}
+      aria-controls="burger-menu"
+      aria-haspopup="true"
     >
       <span
         className={`bg-accent block h-0.75 w-6 origin-center rounded-3xl transition-all duration-300 ${isOpen ? 'translate-y-1.75 rotate-45' : ''}`}

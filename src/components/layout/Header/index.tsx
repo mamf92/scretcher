@@ -7,11 +7,17 @@ import { BurgerButton } from '@/components/layout/Header/burger-button';
 import BurgerMenu from '@/components/layout/Header/burger-menu';
 import { useCallback, useState, useRef } from 'react';
 import { useClickOutside } from '@/hooks/use-click-outside';
+import { useCartStore } from '@/store/cartStore';
 import Link from 'next/link';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const { items } = useCartStore();
+  const itemsCount = items.reduce((total, item) => total + item.quantity, 0);
+  const cartLabel =
+    itemsCount > 0 ? `Cart — ${itemsCount} item${itemsCount === 1 ? '' : 's'}` : 'Cart — empty';
 
   const handleClose = useCallback(() => setIsOpen(false), []);
   const handleToggle = useCallback(() => setIsOpen((prev) => !prev), []);
@@ -19,15 +25,15 @@ export default function Header() {
   useClickOutside(menuRef, handleClose);
   return (
     <header className="bg-primary text-accent sticky top-0 z-50 grid grid-cols-[auto_1fr_auto_1fr_auto] items-center p-4 md:px-[5%] lg:px-[10%]">
-      <Link href="/" className="col-1">
+      <Link href="/" className="col-1" aria-label="Skretcher — go to homepage">
         <Logo />
       </Link>
       <div className="col-3">
         <TextLogo />
       </div>
       <div className="col-5 flex items-center justify-end gap-3">
-        <Link href="/cart">
-          <CartIcon />
+        <Link href="/cart" aria-label={cartLabel}>
+          <CartIcon count={itemsCount} />
         </Link>
 
         <div ref={menuRef}>
