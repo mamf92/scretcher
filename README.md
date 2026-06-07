@@ -1,6 +1,8 @@
 # Skretcher Online Shop
 
-Live demo: https://genuine-sundae-0c12fa.netlify.app
+![Skretcher Banner](https://github.com/mamf92/skretcher/blob/main/public/images/banner.png?raw=true)
+
+Live demo: https://skretcher.netlify.app/
 
 Next.js App Router storefront built for the Noroff JavaScript Frameworks assignment. It highlights product browsing, search/sort/filter, cart checkout, and a validated contact form while consuming the Noroff online-shop API.
 
